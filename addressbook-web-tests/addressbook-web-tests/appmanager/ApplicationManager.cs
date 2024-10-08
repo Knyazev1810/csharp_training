@@ -41,7 +41,7 @@ namespace WebAddressbookTests
             }
             catch (Exception)
             {
-                // Ignore errors if unable to close the browser
+                 // Ignore errors if unable to close the browser
             }
         }
 

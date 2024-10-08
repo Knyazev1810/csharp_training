@@ -42,7 +42,6 @@ namespace WebAddressbookTests
         public bool IsLoggedIn()
         {
             return IsElementPresent(By.Name("logout"));
-            throw new NotImplementedException();
         }
 
         public bool IsLoggedIn(AccountData account)

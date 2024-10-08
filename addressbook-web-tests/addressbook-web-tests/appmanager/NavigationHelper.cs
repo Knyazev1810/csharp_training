@@ -36,6 +36,11 @@ namespace WebAddressbookTests
         }
         public void GoToContactCreationPage()
         {
+            if (driver.Url == baseURL + "/addressbook/edit.php"
+                && IsElementPresent(By.Name("firstname")))
+            {
+                return;
+            }
             driver.FindElement(By.LinkText("add new")).Click();
         }
     }
