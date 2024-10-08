@@ -21,7 +21,7 @@ namespace WebAddressbookTests
             ReturnToHomePage();
             return this;
         }
-        public ContactHelper Modify(int p, ContactData newData)
+        public ContactHelper Modify(ContactData newData)
         {
             InitContactModification();
             FillContactForm(newData);
