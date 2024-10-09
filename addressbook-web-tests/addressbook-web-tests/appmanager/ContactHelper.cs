@@ -62,6 +62,13 @@ namespace WebAddressbookTests
         }
         public ContactHelper SelectContact(int index)
         {
+            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + index + "]")))
+            {
+                driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+                return this;
+            }
+            ContactData contact = new ContactData("aa", "bb");
+            Create(contact);
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
             return this;
         }
@@ -72,6 +79,13 @@ namespace WebAddressbookTests
         }
         public ContactHelper InitContactModification()
         {
+            if (IsElementPresent(By.XPath("//img[@alt='Edit']")))
+            {
+                driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+                return this;
+            }
+            ContactData contact = new ContactData("aa", "bb");
+            Create(contact);
             driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
             return this;
         }
