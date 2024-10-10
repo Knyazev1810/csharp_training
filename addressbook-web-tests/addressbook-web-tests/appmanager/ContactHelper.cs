@@ -62,14 +62,14 @@ namespace WebAddressbookTests
         }
         public ContactHelper SelectContact(int index)
         {
-            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + index + "]")))
+            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")))
             {
-                driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+                driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
                 return this;
             }
             ContactData contact = new ContactData("aa", "bb");
             Create(contact);
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
             return this;
         }
         public ContactHelper RemoveContact()
