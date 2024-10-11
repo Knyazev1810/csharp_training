@@ -62,15 +62,8 @@ namespace WebAddressbookTests
         }
         public ContactHelper SelectContact(int index)
         {
-            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")))
-            {
-                driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
-                return this;
-            }
-            ContactData contact = new ContactData("aa", "bb");
-            Create(contact);
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
-            return this;
+             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
+             return this;
         }
         public ContactHelper RemoveContact()
         {
@@ -79,13 +72,6 @@ namespace WebAddressbookTests
         }
         public ContactHelper InitContactModification()
         {
-            if (IsElementPresent(By.XPath("//img[@alt='Edit']")))
-            {
-                driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
-                return this;
-            }
-            ContactData contact = new ContactData("aa", "bb");
-            Create(contact);
             driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
             return this;
         }
@@ -93,6 +79,25 @@ namespace WebAddressbookTests
         {
             driver.FindElement(By.Name("update")).Click();
             return this;
+        }
+        public void CheckContactAvailibility(int index)
+        {
+            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + (index + 1) + "]")))
+            {
+                return;
+            }
+            ContactData contact = new ContactData("aa", "bb");
+            Create(contact);
+        }
+
+        public void CheckContactAvailibilityForMod()
+        {
+            if (IsElementPresent(By.XPath("//img[@alt='Edit']")))
+            {
+                return;
+            }
+            ContactData contact = new ContactData("aa", "bb");
+            Create(contact);
         }
     }
 }

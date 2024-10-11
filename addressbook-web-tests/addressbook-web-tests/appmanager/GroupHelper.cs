@@ -69,13 +69,6 @@ namespace WebAddressbookTests
 
         public GroupHelper SelectGroup(int index)
         {
-            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")))
-            {
-                driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
-                return this;
-            }
-            GroupData group = new GroupData("test1");
-            Create(group);
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
             return this;
         }
@@ -99,7 +92,15 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("edit")).Click();
             return this;
         }
-
+        public void CheckGroupAvailability(int index)
+        {
+            if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + (index + 1) + "]")))
+            {
+                return;
+            }
+            GroupData group = new GroupData("test1");
+            Create(group);
+        }
         public List<GroupData> GetGroupList()
         {
             List<GroupData> groups = new List<GroupData>();
