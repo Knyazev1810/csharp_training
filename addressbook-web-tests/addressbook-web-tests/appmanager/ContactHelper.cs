@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
@@ -12,6 +11,10 @@ namespace WebAddressbookTests
 {
     public class ContactHelper : HelperBase
     {
+        public ContactHelper(ApplicationManager manager) : base(manager)
+        {
+        }
+
         public ContactHelper Create(ContactData contact)
         {
             manager.Navigator.GoToContactCreationPage();
@@ -38,10 +41,6 @@ namespace WebAddressbookTests
             RemoveContact();
             manager.Navigator.GoToHomePage();
             return this;
-        }
-
-        public ContactHelper(ApplicationManager manager) : base(manager)
-        {
         }
 
         public ContactHelper FillContactForm(ContactData contact)
@@ -89,7 +88,6 @@ namespace WebAddressbookTests
             ContactData contact = new ContactData("aa", "bb");
             Create(contact);
         }
-
         public void CheckContactAvailibilityForMod()
         {
             if (IsElementPresent(By.XPath("//img[@alt='Edit']")))
@@ -98,6 +96,17 @@ namespace WebAddressbookTests
             }
             ContactData contact = new ContactData("aa", "bb");
             Create(contact);
+        }
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            manager.Navigator.GoToHomePage();
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr.entry"));
+            foreach (IWebElement element in elements)
+            {
+                contacts.Add(new ContactData(element.Text, element.Text));
+            }
+            return contacts;
         }
     }
 }
