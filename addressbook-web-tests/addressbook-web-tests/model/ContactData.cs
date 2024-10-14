@@ -46,7 +46,7 @@ namespace WebAddressbookTests
             {
                 return true;
             }
-            return Firstname == other.Firstname & Lastname == other.Lastname;
+            return Firstname == other.Firstname & Lastname == other.Lastname; 
         }
 
         public override int GetHashCode()
@@ -54,9 +54,10 @@ namespace WebAddressbookTests
             return Firstname.GetHashCode() + Lastname.GetHashCode();
         }
 
+        //В обратном порядке, потому что в самом приложении тоже в обратном порядке
         public override string ToString()
         {
-            return "Firstname and Lastname=" + Firstname + Lastname;
+            return "Lastname and Firstname=" + Lastname + " " + Firstname;
         }
 
         public int CompareTo(ContactData other)

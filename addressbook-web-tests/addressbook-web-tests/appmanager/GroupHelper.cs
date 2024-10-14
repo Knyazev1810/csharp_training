@@ -94,6 +94,8 @@ namespace WebAddressbookTests
         }
         public void CheckGroupAvailability(int index)
         {
+            manager.Navigator.GoToGroupsPage();
+
             if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + (index + 1) + "]")))
             {
                 return;

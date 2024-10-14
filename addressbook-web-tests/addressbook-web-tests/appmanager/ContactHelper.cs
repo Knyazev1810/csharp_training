@@ -81,6 +81,8 @@ namespace WebAddressbookTests
         }
         public void CheckContactAvailibility(int index)
         {
+            manager.Navigator.GoToHomePage();
+
             if (IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + (index + 1) + "]")))
             {
                 return;
@@ -90,6 +92,8 @@ namespace WebAddressbookTests
         }
         public void CheckContactAvailibilityForMod()
         {
+            manager.Navigator.GoToHomePage();
+
             if (IsElementPresent(By.XPath("//img[@alt='Edit']")))
             {
                 return;
@@ -101,7 +105,7 @@ namespace WebAddressbookTests
         {
             List<ContactData> contacts = new List<ContactData>();
             manager.Navigator.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr.entry"));
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr.odd"));
             foreach (IWebElement element in elements)
             {
                 contacts.Add(new ContactData(element.Text, element.Text));
