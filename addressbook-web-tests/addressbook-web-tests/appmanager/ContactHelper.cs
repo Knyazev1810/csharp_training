@@ -105,10 +105,16 @@ namespace WebAddressbookTests
         {
             List<ContactData> contacts = new List<ContactData>();
             manager.Navigator.GoToHomePage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr.odd"));
+            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
             foreach (IWebElement element in elements)
             {
-                contacts.Add(new ContactData(element.Text, element.Text));
+                IList<IWebElement> cells = element.FindElements(By.TagName("td"));
+                IWebElement cell1 = cells[1];
+                IWebElement cell2 = cells[2];
+                for (int i = 1; i < 2; i++)
+                {
+                    contacts.Add(new ContactData(cell2.Text, cell1.Text));
+                }     
             }
             return contacts;
         }
