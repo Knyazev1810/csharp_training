@@ -8,10 +8,13 @@ namespace WebAddressbookTests
 {
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
-        public ContactData(string firstname, string lastname)
+        private string allPhones;
+        private string allEmail;
+
+        public ContactData(string firstName, string lastName)
         {
-            Firstname = firstname;
-            Lastname = lastname;
+            Firstname = firstName;
+            Lastname = lastName;
         }
 
         public bool Equals(ContactData other)
@@ -24,7 +27,8 @@ namespace WebAddressbookTests
             {
                 return true;
             }
-            return Firstname == other.Firstname & Lastname == other.Lastname; 
+            return Firstname == other.Firstname 
+                && Lastname == other.Lastname; 
         }
 
         public override int GetHashCode()
@@ -62,13 +66,30 @@ namespace WebAddressbookTests
 
         public string Address { get; set; }
 
-        public string Telephone { get; set; }
+        public string HomePhone { get; set; }
 
-        public string Home { get; set; }
+        public string MobilePhone { get; set; }
 
-        public string Mobile { get; set; }
+        public string WorkPhone { get; set; }
 
-        public string Work { get; set; }
+        public string AllPhones 
+        {
+            get
+            {
+                if (allPhones != null)
+                {
+                    return allPhones;
+                }
+                else
+                {
+                    return (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
+                }
+            }
+            set
+            {
+                allPhones = value;
+            }
+        }
 
         public string Fax { get; set; }
 
@@ -77,6 +98,25 @@ namespace WebAddressbookTests
         public string Email2 { get; set; }
 
         public string Email3 { get; set; }
+
+        public string AllEmail
+        {
+            get
+            {
+                if (allEmail != null)
+                {
+                    return allEmail;
+                }
+                else
+                {
+                    return (CleanUpEmail(Email) + CleanUpEmail(Email2) + CleanUpEmail(Email3)).Trim();
+                }
+            }
+            set
+            {
+                allEmail = value;
+            }
+        }
 
         public string Homepage { get; set; }
 
@@ -87,5 +127,23 @@ namespace WebAddressbookTests
         public string Group { get; set; }
 
         public string Id { get; set; }
+
+        private string CleanUp(string phone)
+        {
+            if (phone == null || phone == "")
+            {
+                return "";
+            }
+            return phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+        }
+
+        private string CleanUpEmail(string email)
+        {
+            if (email == null || email == "")
+            {
+                return "";
+            }
+            return email + "\r\n";
+        }
     }
 }

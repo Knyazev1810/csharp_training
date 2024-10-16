@@ -16,12 +16,12 @@ namespace WebAddressbookTests
         {
             ContactData newData = new ContactData("uu", "rr");
 
-            app.Contacts.CheckContactAvailibilityForMod();
+            app.Contacts.CheckContactAvailibility(0);
 
             List<ContactData> oldContacts = app.Contacts.GetContactList();
             ContactData oldData = oldContacts[0];
 
-            app.Contacts.Modify(newData);
+            app.Contacts.Modify(0, newData);
 
             Assert.AreEqual(oldContacts.Count, app.Contacts.GetContactCount());
 
