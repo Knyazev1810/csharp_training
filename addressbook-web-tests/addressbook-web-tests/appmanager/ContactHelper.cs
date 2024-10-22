@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using System.Text.RegularExpressions;
 
 namespace WebAddressbookTests
 {
@@ -151,27 +152,123 @@ namespace WebAddressbookTests
             manager.Navigator.GoToHomePage();
             InitContactModification(0);
             string firstName = driver.FindElement(By.Name("firstname")).GetAttribute("value");
+            string middleName = driver.FindElement(By.Name("middlename")).GetAttribute("value");
             string lastName = driver.FindElement(By.Name("lastname")).GetAttribute("value");
+            string nickName = driver.FindElement(By.Name("nickname")).GetAttribute("value");
+
+            string company = driver.FindElement(By.Name("company")).GetAttribute("value");
+            string title = driver.FindElement(By.Name("title")).GetAttribute("value");
             string address = driver.FindElement(By.Name("address")).GetAttribute("value");
 
             string homePhone = driver.FindElement(By.Name("home")).GetAttribute("value");
             string mobilePhone = driver.FindElement(By.Name("mobile")).GetAttribute("value");
             string workPhone = driver.FindElement(By.Name("work")).GetAttribute("value");
+            string fax = driver.FindElement(By.Name("fax")).GetAttribute("value");
 
             string email = driver.FindElement(By.Name("email")).GetAttribute("value");
             string email2 = driver.FindElement(By.Name("email2")).GetAttribute("value");
             string email3 = driver.FindElement(By.Name("email3")).GetAttribute("value");
+            string homePage = driver.FindElement(By.Name("homepage")).GetAttribute("value");
+
+            string birthDay = driver.FindElement(By.Name("bday")).GetAttribute("value");
+            string birthMonth = driver.FindElement(By.Name("bmonth")).GetAttribute("value");
+            string birthYear = driver.FindElement(By.Name("byear")).GetAttribute("value");
+
+            string anniversaryDay = driver.FindElement(By.Name("aday")).GetAttribute("value");
+            string anniversaryMonth = driver.FindElement(By.Name("amonth")).GetAttribute("value");
+            string anniversaryYear = driver.FindElement(By.Name("ayear")).GetAttribute("value");
 
             return new ContactData(firstName, lastName)
             {
+                Middlename = middleName,
+                Nickname = nickName,
+                Company = company,
+                Title = title,
                 Address = address, 
                 HomePhone = homePhone, 
                 MobilePhone = mobilePhone,
                 WorkPhone = workPhone,
+                Fax = fax,
                 Email = email,
                 Email2 = email2,
-                Email3 = email3
+                Email3 = email3,
+                Homepage = homePage,
+                Birthday = birthDay,
+                Birthmonth = birthMonth,
+                Birthyear = birthYear,
+                Anniversaryday = anniversaryDay,
+                Anniversarymonth = anniversaryMonth.Substring(0, 1).ToUpper() + anniversaryMonth.Substring(1).ToLower(),
+                Anniversaryyear = anniversaryYear
             };
+        }
+
+        public ContactData GetContactInformationFromPropertiesPage(int index)
+        {
+            manager.Navigator.GoToHomePage();
+            GoToContactDetailsPage(index);
+            string firstName = driver.FindElement(By.Id("content")).Text;
+            string lastName = driver.FindElement(By.Id("content")).Text;
+            string stringOfNames = driver.FindElement(By.Id("content")).Text;
+            string partOfNamesAndAddress = driver.FindElement(By.Id("content")).Text;
+
+            string homePhone = driver.FindElement(By.Id("content")).Text;
+            string mobilePhone = driver.FindElement(By.Id("content")).Text;
+            string workPhone = driver.FindElement(By.Id("content")).Text;
+            string fax = driver.FindElement(By.Id("content")).Text;
+            string partOfPhones = driver.FindElement(By.Id("content")).Text;
+
+            string homePage = driver.FindElement(By.Id("content")).Text;
+            string partOfEmails = driver.FindElement(By.Id("content")).Text;
+
+            string birthDay = driver.FindElement(By.Id("content")).Text;
+            string birthMonth = driver.FindElement(By.Id("content")).Text;
+            string birthYear = driver.FindElement(By.Id("content")).Text;
+            string anniversaryDay = driver.FindElement(By.Id("content")).Text;
+            string anniversaryMonth = driver.FindElement(By.Id("content")).Text;
+            string anniversaryYear = driver.FindElement(By.Id("content")).Text;
+            string stringOfBirthday = driver.FindElement(By.Id("content")).Text;
+            string stringOfAnniversary = driver.FindElement(By.Id("content")).Text;
+            string partOfDates = driver.FindElement(By.Id("content")).Text;
+
+            string allProperties = driver.FindElement(By.Id("content")).Text;
+
+            return new ContactData(firstName, lastName)
+            {
+                StringOfNames = stringOfNames,
+                PartOfNamesAndAddress = partOfNamesAndAddress,
+                HomePhone = homePhone,
+                MobilePhone = mobilePhone,
+                WorkPhone = workPhone,
+                Fax = fax,
+                PartOfPhones = partOfPhones,
+                Homepage = homePage,
+                PartOfEmails = partOfEmails,
+                Birthday = birthDay,
+                Birthmonth = birthMonth,
+                Birthyear = birthYear,
+                Anniversaryday = anniversaryDay,
+                Anniversarymonth = anniversaryMonth,
+                Anniversaryyear = anniversaryYear,
+                StringOfBirthday = stringOfBirthday,
+                StringOfAnniversary = stringOfAnniversary,
+                PartOfDates = partOfDates,
+                AllProperties = allProperties
+            };
+        }
+
+        public int GetNumberOfSearchResults()
+        {
+            manager.Navigator.GoToHomePage();
+            string text = driver.FindElement(By.Id("search_count")).Text;
+            return Int32.Parse(text);
+        }
+
+        public ContactHelper GoToContactDetailsPage(int index)
+        {
+            driver.FindElements(By.Name("entry"))[index]
+                .FindElements(By.TagName("td"))[6]
+                .FindElement(By.TagName("a")).Click();
+            return this;
         }
     }
 }
