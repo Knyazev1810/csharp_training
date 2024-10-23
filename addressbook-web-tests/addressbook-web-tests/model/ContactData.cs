@@ -151,7 +151,7 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return CleanUpPropertyWithSpace(Firstname) + CleanUpPropertyWithSpace(Middlename) + Lastname.Trim();
+                    return (CleanUpPropertyWithSpace(Firstname) + CleanUpPropertyWithSpace(Middlename) + Lastname.Trim()).Trim();
                 }
             }
             set
@@ -231,7 +231,7 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return CleanUpStringOfProperty(StringOfBirthday) + StringOfAnniversary.Trim();
+                    return CleanUpStringOfProperty(StringOfBirthday) + StringOfAnniversary;
                 }
             }
             set
@@ -252,10 +252,9 @@ namespace WebAddressbookTests
                 {
                     return allProperties;
                 }
-                else
                 {
-                    return CleanUpAllPartsOfProperties(PartOfNamesAndAddress) + CleanUpAllPartsOfProperties(PartOfPhones)
-                        + CleanUpAllPartsOfProperties(PartOfEmails) + PartOfDates;
+                    return (CleanUpAllPartsOfProperties(PartOfNamesAndAddress) + CleanUpAllPartsOfProperties(PartOfPhones)
+                        + CleanUpAllPartsOfProperties(PartOfEmails) + PartOfDates.Trim()).Trim();
                 }
             }
             set
@@ -268,21 +267,14 @@ namespace WebAddressbookTests
         {
             get
             {
-                if (stringOfBirthday != null)
+                if (stringOfBirthday != null || stringOfBirthday != "")
                 {
                     return stringOfBirthday;
                 }
                 else
                 {
-                    if (Birthday != null || Birthmonth != null || Birthyear != null)
-                    {
-                        return "Birthday " + CleanUpPropertyWithDotAndSpase(Birthday) 
-                            + CleanUpPropertyWithSpace(Birthmonth) + Birthyear.Trim();
-                    }
-                    else
-                    {
-                        return "";
-                    }
+                    return "Birthday " + CleanUpPropertyWithDotAndSpase(Birthday)
+                        + CleanUpMonth(Birthmonth) + Birthyear.Trim();
                 }
             }
             set
@@ -294,21 +286,14 @@ namespace WebAddressbookTests
         {
             get
             {
-                if (stringOfAnniversary != null)
+                if (stringOfAnniversary != null || stringOfAnniversary != "")
                 {
                     return stringOfAnniversary;
                 }
                 else
                 {
-                    if (Anniversaryday != null || Anniversarymonth != null || Birthyear != null)
-                    {
-                        return "Anniversary " + CleanUpPropertyWithDotAndSpase(Anniversaryday) 
-                            + CleanUpPropertyWithSpace(Anniversarymonth) + Anniversaryyear.Trim();
-                    }
-                    else
-                    {
-                        return "";
-                    }
+                    return "Anniversary " + CleanUpPropertyWithDotAndSpase(Anniversaryday)
+                        + CleanUpMonth(Anniversarymonth) + Anniversaryyear.Trim();
                 }
             }
             set
@@ -355,11 +340,20 @@ namespace WebAddressbookTests
 
         private string CleanUpPropertyWithDotAndSpase(string property)
         {
-            if (property == null || property == "")
+            if (property == null || property == "" || property == "0")
             {
                 return "";
             }
             return property + ". ";
+        }
+
+        private string CleanUpMonth(string month)
+        {
+            if (month == null || month == "" || month == "-")
+            {
+                return "";
+            }
+            return month + " ";
         }
 
         private string CleanUpStringOfProperty(string property)
@@ -413,7 +407,10 @@ namespace WebAddressbookTests
             {
                 return "";
             }
-            return partOfProperties + "\r\n";
+            {
+                
+            }
+                return partOfProperties + "\r\n";
         }
     }
 }

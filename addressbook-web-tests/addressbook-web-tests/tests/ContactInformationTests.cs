@@ -31,10 +31,6 @@ namespace WebAddressbookTests
 
             //verification
             Assert.AreEqual(fromPropertiesPage.AllProperties, fromForm.AllProperties);
-            //Assert.AreEqual(fromPropertiesPage.PartOfNamesAndAddress, fromForm.PartOfNamesAndAddress);
-            //Assert.AreEqual(fromPropertiesPage.PartOfPhones, fromForm.PartOfPhones);
-            //Assert.AreEqual(fromPropertiesPage.PartOfEmails, fromForm.PartOfEmails);
-            //Assert.AreEqual(fromPropertiesPage.PartOfDates, fromForm.PartOfDates);
         }
     }
 }
