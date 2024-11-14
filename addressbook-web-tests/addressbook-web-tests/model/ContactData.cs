@@ -20,6 +20,10 @@ namespace WebAddressbookTests
         private string stringOfAnniversary;
         private string partOfDates;
 
+        public ContactData()
+        {
+        }
+
         public ContactData(string firstName, string lastName)
         {
             Firstname = firstName;
