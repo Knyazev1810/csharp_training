@@ -1,13 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfGroupData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <GroupData>
-    <Name>? U</Name>
-    <Header>3VY96I=)G</Header>
-    <Footer>V?)$</Footer>
-  </GroupData>
-  <GroupData>
-    <Name>K\.</Name>
-    <Header>VI&lt;[S^:%K&gt;</Header>
-    <Footer>/</Footer>
-  </GroupData>
-</ArrayOfGroupData>
+<ArrayOfContactData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ContactData>
+    <Firstname>Y?BXSZ</Firstname>
+    <Middlename>-J</Middlename>
+    <Lastname>`^?)7$(ZO</Lastname>
+    <Nickname>;@,8\Y</Nickname>
+    <Photo>C!+</Photo>
+    <Title>OO::&lt;,&gt;7@!</Title>
+    <Company>GXZ@^%B.</Company>
+    <Address>K8</Address>
+    <HomePhone>*9</HomePhone>
+    <MobilePhone>*][</MobilePhone>
+    <WorkPhone>5`S@:</WorkPhone>
+    <Fax>KO=CPW</Fax>
+    <AllPhones>*9
+*][
+5`S@:</AllPhones>
+    <Email>HJ</Email>
+    <Email2>5?&lt;[1!T_6</Email2>
+    <Email3>C0!)</Email3>
+    <AllEmail />
+    <Homepage>=^NTU</Homepage>
+    <StringOfNames>Y?BXSZ -J `^?)7$(ZO</StringOfNames>
+    <PartOfNamesAndAddress>Y?BXSZ -J `^?)7$(ZO
+;@,8\Y
+OO::&lt;,&gt;7@!
+GXZ@^%B.
+K8
+</PartOfNamesAndAddress>
+    <PartOfPhones>H: *9
+M: *][
+W: 5`S@:
+F: KO=CPW
+</PartOfPhones>
+    <PartOfEmails>HJ
+5?&lt;[1!T_6
+C0!)
+Homepage:
+=^NTU
+</PartOfEmails>
+    <PartOfDates />
+    <AllProperties>Y?BXSZ -J `^?)7$(ZO
+;@,8\Y
+OO::&lt;,&gt;7@!
+GXZ@^%B.
+K8
+
+H: *9
+M: *][
+W: 5`S@:
+F: KO=CPW
+
+HJ
+5?&lt;[1!T_6
+C0!)
+Homepage:
+=^NTU</AllProperties>
+  </ContactData>
+  <ContactData>
+    <Firstname>@Y37</Firstname>
+    <Middlename>U.EA</Middlename>
+    <Lastname>L</Lastname>
+    <Nickname>`LBa2</Nickname>
+    <Photo>,U*</Photo>
+    <Title />
+    <Company>;</Company>
+    <Address>4A/:-\W</Address>
+    <HomePhone>]</HomePhone>
+    <MobilePhone>DH[^(BB)_P</MobilePhone>
+    <WorkPhone>*6a=L</WorkPhone>
+    <Fax>H /=</Fax>
+    <AllPhones>]
+DH[^BB_P
+*6a=L</AllPhones>
+    <Email>YJQ+.;!J</Email>
+    <Email2>;#M_987</Email2>
+    <Email3>2</Email3>
+    <AllEmail>[(L-*+</AllEmail>
+    <Homepage>^B</Homepage>
+    <StringOfNames>@Y37 U.EA L</StringOfNames>
+    <PartOfNamesAndAddress>@Y37 U.EA L
+`LBa2
+;
+4A/:-\W
+</PartOfNamesAndAddress>
+    <PartOfPhones>H: ]
+M: DH[^(BB)_P
+W: *6a=L
+F: H /=
+</PartOfPhones>
+    <PartOfEmails>YJQ+.;!J
+;#M_987
+2
+Homepage:
+^B
+</PartOfEmails>
+    <PartOfDates />
+    <AllProperties>@Y37 U.EA L
+`LBa2
+;
+4A/:-\W
+
+H: ]
+M: DH[^(BB)_P
+W: *6a=L
+F: H /=
+
+YJQ+.;!J
+;#M_987
+2
+Homepage:
+^B</AllProperties>
+  </ContactData>
+</ArrayOfContactData>
