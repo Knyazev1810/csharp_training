@@ -68,6 +68,7 @@ namespace WebAddressbookTests
         [Column(Name = "firstname")]
         public string Firstname { get; set; }
 
+        [Column(Name = "middlename")]
         public string Middlename { get; set; }
 
         [Column(Name = "lastname")]
@@ -76,22 +77,31 @@ namespace WebAddressbookTests
         [Column(Name = "id"), PrimaryKey]
         public string Id { get; set; }
 
+        [Column(Name = "nickname")]
         public string Nickname { get; set; }
 
+        [Column(Name = "photo")]
         public string Photo { get; set; }
 
+        [Column(Name = "title")]
         public string Title { get; set; }
 
+        [Column(Name = "company")]
         public string Company { get; set; }
 
+        [Column(Name = "address")]
         public string Address { get; set; }
 
+        [Column(Name = "home")]
         public string HomePhone { get; set; }
 
+        [Column(Name = "mobile")]
         public string MobilePhone { get; set; }
 
+        [Column(Name = "work")]
         public string WorkPhone { get; set; }
 
+        [Column(Name = "fax")]
         public string Fax { get; set; }
 
         public string AllPhones 
@@ -113,10 +123,13 @@ namespace WebAddressbookTests
             }
         }
 
+        [Column(Name = "email")]
         public string Email { get; set; }
 
+        [Column(Name = "email2")]
         public string Email2 { get; set; }
 
+        [Column(Name = "email3")]
         public string Email3 { get; set; }
 
         public string AllEmail
@@ -138,18 +151,25 @@ namespace WebAddressbookTests
             }
         }
 
+        [Column(Name = "homepage")]
         public string Homepage { get; set; }
 
+        [Column(Name = "bday")]
         public string Birthday { get; set; }
 
+        [Column(Name = "bmonth")]
         public string Birthmonth { get; set; }
 
+        [Column(Name = "byear")]
         public string Birthyear { get; set; }
 
+        [Column(Name = "aday")]
         public string Anniversaryday { get; set; }
 
+        [Column(Name = "amonth")]
         public string Anniversarymonth { get; set; }
 
+        [Column(Name = "ayear")]
         public string Anniversaryyear { get; set; }
 
         [Column(Name = "deprecated")]

@@ -44,6 +44,16 @@ namespace WebAddressbookTests
             return this;
         }
 
+        public ContactHelper Remove(ContactData contact)
+        {
+            manager.Navigator.GoToHomePage();
+
+            SelectContact(contact.Id);
+            RemoveContact();
+            manager.Navigator.GoToHomePage();
+            return this;
+        }
+
         public ContactHelper FillContactForm(ContactData contact)
         {
             Type(By.Name("firstname"), contact.Firstname);
@@ -66,6 +76,11 @@ namespace WebAddressbookTests
              driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
              return this;
         }
+        public void SelectContact(string contactId)
+        {
+            driver.FindElement(By.Id(contactId)).Click();
+        }
+
         public ContactHelper RemoveContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
@@ -310,11 +325,6 @@ namespace WebAddressbookTests
         public void SelectGroupToAdd(string name)
         {
             new SelectElement(driver.FindElement(By.Name("to_group"))).SelectByText(name);
-        }
-
-        public void SelectContact(string contactId)
-        {
-            driver.FindElement(By.Id(contactId)).Click();
         }
 
         public void ClearGroupFilter()
