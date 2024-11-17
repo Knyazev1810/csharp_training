@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace WebAddressbookTests
 {
@@ -28,6 +29,14 @@ namespace WebAddressbookTests
         public ContactHelper Modify(int p, ContactData newData)
         {
             InitContactModification(p);
+            FillContactForm(newData);
+            SubmitContactModification();
+            ReturnToHomePage();
+            return this;
+        }
+        public ContactHelper Modify(ContactData contact, ContactData newData)
+        {
+            InitContactModification(contact.Id);
             FillContactForm(newData);
             SubmitContactModification();
             ReturnToHomePage();
@@ -92,6 +101,11 @@ namespace WebAddressbookTests
             driver.FindElements(By.Name("entry"))[index]
                 .FindElements(By.TagName("td"))[7]
                 .FindElement(By.TagName("a")).Click();
+            return this;
+        }
+        public ContactHelper InitContactModification(string contactId)
+        {
+            driver.FindElement(By.XPath("(//a[@href='edit.php?id=" + contactId + "'])")).Click();
             return this;
         }
         public ContactHelper SubmitContactModification()

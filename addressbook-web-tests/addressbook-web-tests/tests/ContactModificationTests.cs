@@ -19,9 +19,9 @@ namespace WebAddressbookTests
             app.Contacts.CheckContactAvailibility(0);
 
             List<ContactData> oldContacts = ContactData.GetAll();
-            ContactData oldData = oldContacts[0];
+            ContactData toBeMofified = oldContacts[0];
 
-            app.Contacts.Modify(0, newData);
+            app.Contacts.Modify(toBeMofified, newData);
 
             Assert.AreEqual(oldContacts.Count, app.Contacts.GetContactCount());
 
@@ -34,7 +34,7 @@ namespace WebAddressbookTests
 
             foreach (ContactData contact in newContacts)
             {
-                if (contact.Id == oldData.Id)
+                if (contact.Id == toBeMofified.Id)
                 {
                     Assert.AreEqual(newData.Firstname, contact.Firstname);
                     Assert.AreEqual(newData.Lastname, contact.Lastname);
