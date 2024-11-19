@@ -13,7 +13,7 @@ namespace WebAddressbookTests
         [Test]
         public void GroupRemovalTest()
         {
-            app.Groups.CheckGroupAvailability(0);
+            app.Groups.CheckGroupsListIsNotEmpty(0);
 
             List<GroupData> oldGroups = GroupData.GetAll();
             GroupData toBeRemoved = oldGroups[0];

@@ -16,7 +16,7 @@ namespace WebAddressbookTests
         {
             ContactData newData = new ContactData("uu", "rr");
 
-            app.Contacts.CheckContactAvailibility(0);
+            app.Contacts.CheckContactsListIsNotEmpty(0);
 
             List<ContactData> oldContacts = ContactData.GetAll();
             ContactData toBeMofified = oldContacts[0];

@@ -12,8 +12,17 @@ namespace WebAddressbookTests
         [Test]
         public void AddingContactToGroupTest()
         {
+            app.Groups.CheckGroupsListIsNotEmpty(0);
+            app.Contacts.CheckContactsListIsNotEmpty(0);
+
             GroupData group = GroupData.GetAll()[0];
+            List<ContactData> allContactsList = ContactData.GetAll();
             List<ContactData> oldList = group.GetContacts();
+            if (allContactsList.Count == oldList.Count)
+            {
+                ContactData newContact = new ContactData("aa", "bb");
+                app.Contacts.Create(newContact);
+            }
             ContactData contact = ContactData.GetAll().Except(oldList).First();
 
             app.Contacts.AddContactToGroup(contact, group);

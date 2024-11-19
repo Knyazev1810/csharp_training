@@ -17,7 +17,7 @@ namespace WebAddressbookTests
             newData.Header = null;
             newData.Footer = null;
 
-            app.Groups.CheckGroupAvailability(2);
+            app.Groups.CheckGroupsListIsNotEmpty(2);
 
             List<GroupData> oldGroups = GroupData.GetAll();
             GroupData toBeModified = oldGroups[2];

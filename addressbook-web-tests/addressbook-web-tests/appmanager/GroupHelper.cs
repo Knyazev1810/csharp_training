@@ -125,7 +125,7 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("edit")).Click();
             return this;
         }
-        public void CheckGroupAvailability(int index)
+        public void CheckGroupsListIsNotEmpty(int index)
         {
             manager.Navigator.GoToGroupsPage();
 
@@ -135,21 +135,6 @@ namespace WebAddressbookTests
             }
             GroupData group = new GroupData("test1");
             Create(group);
-        }
-        public void CheckGroupAvailability(string id)
-        {
-            manager.Navigator.GoToGroupsPage();
-
-            if (IsElementPresent(By.XPath("(//input[@name='selected[]' and @value='" + id + "'])")))
-            {
-                return;
-            }
-            GroupData group = new GroupData("test1");
-            Create(group);
-        }
-        public void GroupAvailability(GroupData group)
-        {
-            CheckGroupAvailability(group.Id);
         }
 
         private List<GroupData> groupCache = null;

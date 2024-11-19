@@ -114,7 +114,7 @@ namespace WebAddressbookTests
             contactCache = null;
             return this;
         }
-        public void CheckContactAvailibility(int index)
+        public void CheckContactsListIsNotEmpty(int index)
         {
             manager.Navigator.GoToHomePage();
 
