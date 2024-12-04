@@ -48,6 +48,20 @@ namespace mantis_tests
             Add(project);
         }
 
+        public void CheckProjectListIsNotEmptyAPI(AccountData account)
+        {
+            Mantis.MantisConnectPortTypeClient client = new Mantis.MantisConnectPortTypeClient();
+            manager.LeftPanel.GoToManagement();
+            manager.ManagementPanel.GoToProjectManagement();
+            if (IsElementPresent(By.CssSelector("i.fa.fa-check.fa-lg")))
+            {
+                return;
+            }
+            Mantis.ProjectData project = new Mantis.ProjectData();
+            project.name = "test";
+            client.mc_project_add(account.Username, account.Password, project);
+        }
+
         public ProjectManagementHelper SubmiRemovingProject()
         {
             driver.FindElement(By.XPath("//input[@value='Delete Project']")).Click();

@@ -94,7 +94,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="appmanager\APIHelper.cs" />
     <Compile Include="appmanager\ApplicationManager.cs" />
     <Compile Include="appmanager\HelperBase.cs" />
     <Compile Include="appmanager\LoginHelper.cs" />
@@ -116,7 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\Mantis\mantisconnect.wsdl" />
+    <None Include="Connected Services\Mantis\mantisconnect1.wsdl" />
     <None Include="Connected Services\Mantis\mantis_tests.Mantis.AccountData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

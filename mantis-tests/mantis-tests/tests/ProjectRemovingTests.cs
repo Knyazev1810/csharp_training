@@ -16,20 +16,15 @@ namespace mantis_tests
             AccountData account = new AccountData()
             {
                 Username = "administrator",
-                Password = "password"
+                Password = "root"
             };
-
-            app.Projects.CheckProjectListIsNotEmpty();
+            app.Projects.CheckProjectListIsNotEmptyAPI(account);
 
             List<ProjectData> oldProjects = app.Projects.GetProjectListAPI(account);
-            //List<ProjectData> oldProjects = app.API.GetProjectList(account);
-            //List<ProjectData> oldProjects = app.Projects.GetOldProjectList();
 
             app.Projects.Remove(0);
 
             List<ProjectData> newProjects = app.Projects.GetProjectListAPI(account);
-            //List<ProjectData> newProjects = app.API.GetProjectList(account);
-            //List<ProjectData> newProjects = app.Projects.GetNewProjectList();
 
             Assert.AreEqual(oldProjects.Count - 1, newProjects.Count);
         }

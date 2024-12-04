@@ -8,8 +8,8 @@ namespace mantis_tests
 {
     public class AccountData
     {
-        public string username {  get; set; }
-        public string password { get; set; }
+        private string username;
+        private string password;
 
         public AccountData() { }
         public AccountData(string username, string password)
