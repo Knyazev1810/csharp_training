@@ -85,6 +85,22 @@ namespace mantis_tests
             return this;
         }
 
+        public List<ProjectData> GetProjectListAPI(AccountData account)
+        {
+            Mantis.MantisConnectPortTypeClient client = new Mantis.MantisConnectPortTypeClient();
+            List<ProjectData> projects = new List<ProjectData>();
+            manager.LeftPanel.GoToManagement();
+            manager.ManagementPanel.GoToProjectManagement();
+            IList<Mantis.ProjectData> elements = client.mc_projects_get_user_accessible(account.Username, account.Password);
+            foreach (Mantis.ProjectData element in elements)
+            {
+                string Name = element.name;
+                projects.Add(new ProjectData(Name));
+
+            }
+            return projects;
+        }
+
         public List<ProjectData> GetOldProjectList()
         {
             List<ProjectData> projects = new List<ProjectData>();

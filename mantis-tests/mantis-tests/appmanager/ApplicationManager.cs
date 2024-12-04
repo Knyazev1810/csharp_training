@@ -31,6 +31,7 @@ namespace mantis_tests
             managementPanelHelper = new ManagementPanelHelper(this, baseURL);
             leftPanelHelper = new LeftPanelHelper(this, baseURL);
             projectManagementHelper = new ProjectManagementHelper(this);
+            API = new APIHelper(this);
         }
 
         ~ApplicationManager()
@@ -92,5 +93,6 @@ namespace mantis_tests
                 return projectManagementHelper;
             }
         }
+        public APIHelper API { get; set; }
     }
 }
